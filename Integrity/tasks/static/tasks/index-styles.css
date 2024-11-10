@@ -1,0 +1,49 @@
+body > div.main-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.main-block > div > * {
+    min-width: 20rem;
+    max-width: auto;
+    padding: 0.5rem;
+}
+
+form > * {
+    text-align: center;
+}
+
+input {
+    width: 75%;
+    font-size: 1rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.75rem;
+}
+
+ul > div {
+    border: solid skyblue 0.1rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    border-radius: 0.4rem;
+    width: 100%;
+    display: flex;
+}
+
+ul > div > * {
+    margin-right: 0.4rem;
+    margin-left: 0.4rem;
+}
+
+li {
+    width: 95%;
+}
+
+button {
+    background-color: azure;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin: 0.1rem 0.1rem;
+    padding: 0.1rem;
+}
+

@@ -1,0 +1,30 @@
+{% extends "tasks/layout.html" %}
+
+{% load static %}
+
+{% block css %}
+<link href="{% static 'tasks/index-styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}Edit{% endblock %}
+
+{% block body %}
+<div class="main-block">
+{% if task %}
+<form action="{% url 'tasks:edit_task' task_id=task.id %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Edit</button>
+</form>
+{% endif %}
+
+{% if subtask %}
+<form action="{% url 'tasks:edit_subtask' subtask_id=subtask.id %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Edit</button>
+</form>
+{% endif %}
+</div>
+{% endblock %}

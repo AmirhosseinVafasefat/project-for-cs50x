@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'tasks/icon.png' %}" rel="icon" type="image/x-icon" >
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'tasks/styles.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+</head>  
+<body>
+    <header>
+        <div id="navbar">
+            <div><a href="{% url 'tasks:index' %}">✅</a></div>|
+            <div><a aria-details="home" href="">🏠</a></div>|
+        </div>
+        <div>
+            <a href="{% url 'users:logout' %}"><img src="{% static 'tasks/user-icon.png' %}"></a>
+        </div>
+
+    </header>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

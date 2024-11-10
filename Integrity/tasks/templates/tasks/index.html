@@ -1,0 +1,64 @@
+{% extends "tasks/layout.html" %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'tasks/index-styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+    <div class="main-block">
+        <div>
+        <form action="{% url 'tasks:index' %}" method="post">
+            <div>Add New Task</div>
+            {% csrf_token %}
+            {{ taskform }}
+            {{ subtaskform }}
+            <button type="submit">Add Task</button>
+        </form>
+
+        <ul>
+            {% for task in tasks %}
+            <div>
+                <li class="task">
+                    {{ task.task }}
+                    <ul>
+                        {% for subtask in task.subtasks.all %}
+                            <div>
+                                <li class="subtask">{{ subtask }}</li>
+                                <div>
+                                    <form action="{% url 'tasks:remove_subtask' subtask_id=subtask.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit">Remove</button>
+                                    </form>
+                                    <form action="{% url 'tasks:edit_subtask' subtask_id=subtask.id %}" method="get">
+                                        <button type="submit">Edit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>No subtasks</p>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <div>
+                    <form action="{% url 'tasks:remove_task' task_id=task.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Remove</button>
+                    </form>
+                    <form action="{% url 'tasks:edit_task' task_id=task.id %}" method="get">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="{% url 'tasks:add_subtask' task_id=task.id %}" method="get">
+                        <button type="submit">Add Subtask</button>
+                    </form> 
+                </div>
+            </div>
+            {% empty %}
+            <p>No tasks</p>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+</form>
+Don't have an account?
+<a href="{% url 'users:registration' %}">Click here</a>
+{% endblock %}

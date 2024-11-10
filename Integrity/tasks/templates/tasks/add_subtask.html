@@ -1,0 +1,20 @@
+{% extends "tasks/layout.html" %}
+
+{% load static %}
+
+{% block css %}
+<link href="{% static 'tasks/index-styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Add Subtask{% endblock %}
+
+{% block body %}
+<div class="main-block">
+<form action="{% url 'tasks:add_subtask' task_id=task.id %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Add Subtask</button>
+</form>
+</div>
+
+{% endblock %}

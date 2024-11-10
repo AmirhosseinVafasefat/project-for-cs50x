@@ -1,0 +1,13 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block body %}
+<form action="{% url 'users:logout' %}" method="post">
+{% csrf_token %}
+Want to logout?
+<button type="submit">Logout</button>
+Want to go back  to homepage? <a href="{% url 'users:registration' %}">Homepage</a>
+</form>
+
+{% endblock %}
